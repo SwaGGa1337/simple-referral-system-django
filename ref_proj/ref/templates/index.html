@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Referral System</title>
+</head>
+<body>
+  <h1>Referral System</h1>
+
+  <form action="{% url 'authorize' %}" method="post">{% csrf_token %}
+      <label>Phone Number:</label>
+      <input type="text" name="phone_number">
+      <button type="submit">Authorize</button>
+  </form>
+
+  <form action="{% url 'verify-auth-code' %}" method="post">{% csrf_token %}
+      <label>Phone Number:</label>
+      <input type="text" name="phone_number">
+      <label>Auth Code:</label>
+      <input type="text" name="auth_code">
+      <button type="submit">Verify Auth Code</button>
+  </form>
+
+  <form action="{% url 'user-profile' %}" method="post">{% csrf_token %}
+      <label>Phone Number:</label>
+      <input type="text" name="phone_number">
+      <label>Invite Code:</label>
+      <input type="text" name="invite_code">
+      <button type="submit" type="submit">Update Profile</button>
+  </form>
+
+  <form action="{% url 'referrals' %}" method="get">{% csrf_token %}
+      <label>Phone Number:</label>
+      <input type="text" name="phone_number">
+      <button type="submit">Get Referrals</button>
+  </form>
+</body>
+</html>

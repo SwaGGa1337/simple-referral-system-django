@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<h1>User Profile</h1>
+    <form action="{% url 'profile' %}" method="get">
+        <p>Phone number: {{ser_dat.phone_number}}</p>
+        <p>Invite code: {{ser_dat.invite_code}}</p>
+        <p>Referrals:
+            <ul>
+            {% for referral in ref_dat %}
+                <li>
+                    {{referral.phone}}
+                </li>
+            {%endfor%}
+            </ul>
+        </p>
+    </form>
+    <form action="{% url 'profile' %}" method="post">{% csrf_token %}
+        <label>Invite code:</label>
+        <input type="text" name="invite_code">
+        <button type="submit">Authorize</button>
+    </form>
+</body>
+</html>
